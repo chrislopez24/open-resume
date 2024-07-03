@@ -16,6 +16,9 @@ import { CustomForm } from "components/ResumeForm/CustomForm";
 import { FlexboxSpacer } from "components/FlexboxSpacer";
 import { cx } from "lib/cx";
 
+import Image from "next/image";
+import qualtbImageSrc from "public/assets/header_image.png";
+
 const formTypeToComponent: { [type in ShowForm]: () => JSX.Element } = {
   workExperiences: WorkExperiencesForm,
   educations: EducationsForm,
@@ -41,6 +44,13 @@ export const ResumeForm = () => {
       onMouseLeave={() => setIsHover(false)}
     >
       <section className="flex max-w-2xl flex-col gap-8 p-[var(--resume-padding)]">
+        <Image
+          src={qualtbImageSrc}
+          alt="Qualtb"
+          width={1920}
+          height={300}
+          className="w-full object-cover"
+        />
         <ProfileForm />
         {formsOrder.map((form) => {
           const Component = formTypeToComponent[form];

@@ -1,4 +1,4 @@
-import { Page, View, Document } from "@react-pdf/renderer";
+import { Page, View, Document, Image } from "@react-pdf/renderer";
 import { styles, spacing } from "components/Resume/ResumePDF/styles";
 import { ResumePDFProfile } from "components/Resume/ResumePDF/ResumePDFProfile";
 import { ResumePDFWorkExperience } from "components/Resume/ResumePDF/ResumePDFWorkExperience";
@@ -10,6 +10,9 @@ import { DEFAULT_FONT_COLOR } from "lib/redux/settingsSlice";
 import type { Settings, ShowForm } from "lib/redux/settingsSlice";
 import type { Resume } from "lib/redux/types";
 import { SuppressResumePDFErrorMessage } from "components/Resume/ResumePDF/common/SuppressResumePDFErrorMessage";
+
+
+
 
 /**
  * Note: ResumePDF is supposed to be rendered inside PDFViewer. However,
@@ -104,7 +107,9 @@ export const ResumePDF = ({
             fontSize: fontSize + "pt",
           }}
         >
-          {Boolean(settings.themeColor) && (
+          <Image src={{ uri: './assets/header_image.png', method: "GET", headers: { "Cache-Control": "no-cache" }, body: "" }} />
+
+            {Boolean(settings.themeColor) && (
             <View
               style={{
                 width: spacing["full"],
@@ -119,6 +124,7 @@ export const ResumePDF = ({
               padding: `${spacing[0]} ${spacing[20]}`,
             }}
           >
+            
             <ResumePDFProfile
               profile={profile}
               themeColor={themeColor}

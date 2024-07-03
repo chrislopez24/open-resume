@@ -17,6 +17,9 @@ import {
 } from "components/fonts/hooks";
 import { NonEnglishFontsCSSLazyLoader } from "components/fonts/NonEnglishFontsCSSLoader";
 
+import Image from "next/image";
+import qualtbImageSrc from "public/assets/header_image.png";
+
 export const Resume = () => {
   const [scale, setScale] = useState(0.8);
   const resume = useAppSelector(selectResume);
@@ -41,6 +44,13 @@ export const Resume = () => {
               scale={scale}
               enablePDFViewer={DEBUG_RESUME_PDF_FLAG}
             >
+              <Image
+                src={qualtbImageSrc}
+                alt="Qualtb"
+                width={900}
+                height={300}
+                className="w-full object-cover"
+              />
               <ResumePDF
                 resume={resume}
                 settings={settings}
